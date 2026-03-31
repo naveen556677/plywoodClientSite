@@ -1,0 +1,256 @@
+@import './variables';
+
+.pageHeader {
+  padding: calc($space-5xl + 40px) 0 $space-4xl;
+  background-color: $color-secondary;
+  border-bottom: 1px solid $color-glass-border;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 90% 10%, rgba(212, 165, 116, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .title {
+    font-size: $font-size-hero;
+    margin-bottom: $space-md;
+
+    span {
+      background: $gradient-accent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .subtitle {
+    font-size: $font-size-lg;
+    color: $color-text-muted;
+    max-width: 600px;
+  }
+
+  @include respond-to(tablet) {
+    .title { font-size: $font-size-4xl; }
+  }
+
+  @include respond-to(mobile) {
+    .title { font-size: $font-size-3xl; }
+    .subtitle { font-size: $font-size-base; }
+  }
+}
+
+.servicesSection {
+  background-color: $color-primary;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-2xl;
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+  }
+}
+
+.serviceCard {
+  @include glass-card;
+  padding: $space-2xl;
+  background: $color-secondary;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: transform $transition-spring, box-shadow $transition-base;
+  display: flex;
+  flex-direction: column;
+
+  .iconBox {
+    width: 60px;
+    height: 60px;
+    background: rgba(212, 165, 116, 0.1);
+    border-radius: $radius-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: $space-lg;
+    transition: transform $transition-base, background $transition-base;
+    color: $color-accent;
+  }
+
+  h3 {
+    font-size: $font-size-xl;
+    color: $color-text;
+    margin-bottom: $space-sm;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    line-height: 1.6;
+    margin-bottom: $space-lg;
+    flex-grow: 1;
+  }
+
+  .serviceLink {
+    color: $color-accent;
+    font-weight: 600;
+    font-size: $font-size-sm;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: translateX(5px);
+    }
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-xl;
+    border-color: rgba(212, 165, 116, 0.15);
+
+    .iconBox {
+      transform: scale(1.1) rotate(5deg);
+      background: $gradient-accent;
+      color: $color-primary;
+    }
+  }
+}
+
+// Process Section
+.processSection {
+  background-color: $color-secondary;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3xl;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 40px;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, rgba(212, 165, 116, 0.2), transparent);
+
+    @include respond-to(mobile) {
+      left: 20px;
+    }
+  }
+}
+
+.timelineStep {
+  display: flex;
+  gap: $space-xl;
+  position: relative;
+  z-index: 1;
+
+  .stepNum {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    background: $color-primary;
+    border: 2px solid $color-accent;
+    border-radius: $radius-full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-heading;
+    font-size: $font-size-xl;
+    font-weight: 900;
+    color: $color-accent;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+
+    @include respond-to(mobile) {
+      width: 40px;
+      height: 40px;
+      font-size: $font-size-sm;
+    }
+  }
+
+  .stepContent {
+    background: $color-primary;
+    padding: $space-xl;
+    border-radius: $radius-lg;
+    border: 1px solid rgba(255,255,255,0.05);
+
+    h4 {
+      font-size: $font-size-xl;
+      color: $color-text;
+      margin-bottom: $space-sm;
+    }
+
+    p {
+      color: $color-text-muted;
+      margin: 0;
+    }
+
+    @include respond-to(tablet) {
+      padding: $space-lg;
+    }
+  }
+}
+
+// Banner Section
+.bannerSection {
+  background-color: $color-primary;
+  padding: $space-5xl 0;
+}
+
+.bannerCard {
+  background: $gradient-accent;
+  border-radius: $radius-xl;
+  padding: $space-4xl;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2 {
+    color: $color-primary;
+    font-size: $font-size-3xl;
+    margin-bottom: $space-sm;
+  }
+
+  p {
+    color: rgba(13, 13, 26, 0.8);
+    font-size: $font-size-lg;
+    margin: 0;
+  }
+
+  .btn {
+    background: $color-primary;
+    color: $color-text;
+    border: none;
+    white-space: nowrap;
+
+    &:hover {
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+  }
+
+  @include respond-to(tablet) {
+    flex-direction: column;
+    text-align: center;
+    gap: $space-2xl;
+    padding: $space-2xl;
+  }
+}

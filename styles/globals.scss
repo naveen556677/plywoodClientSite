@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import './variables';
+
+// ============================================
+// GLOBAL RESET & BASE STYLES
+// ============================================
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-body;
+  background-color: $color-primary;
+  color: $color-text;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+// Background pattern
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(212, 165, 116, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(212, 165, 116, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(28, 28, 58, 0.5) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#__next {
+  position: relative;
+  z-index: $z-base;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 700;
+  line-height: 1.2;
+  color: $color-text;
+}
+
+h1 { font-size: $font-size-hero; @include respond-to(tablet) { font-size: $font-size-4xl; } @include respond-to(mobile) { font-size: $font-size-3xl; } }
+h2 { font-size: $font-size-4xl; @include respond-to(tablet) { font-size: $font-size-3xl; } @include respond-to(mobile) { font-size: $font-size-2xl; } }
+h3 { font-size: $font-size-2xl; @include respond-to(tablet) { font-size: $font-size-xl; } }
+h4 { font-size: $font-size-xl; }
+h5 { font-size: $font-size-lg; }
+
+p {
+  color: $color-text-muted;
+  line-height: 1.8;
+  font-size: $font-size-base;
+}
+
+a {
+  color: $color-accent;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent-light;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: $font-body;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: $font-body;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+// ============================================
+// UTILITY CLASSES
+// ============================================
+
+.container {
+  @include container;
+}
+
+.section {
+  @include section-padding;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: $space-4xl;
+
+  @include respond-to(tablet) {
+    margin-bottom: $space-3xl;
+  }
+}
+
+.section-label {
+  display: inline-block;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-accent;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: $space-md;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: $color-accent;
+    vertical-align: middle;
+    margin: 0 12px;
+    opacity: 0.5;
+  }
+}
+
+.section-title {
+  margin-bottom: $space-lg;
+  
+  span {
+    color: $color-accent;
+  }
+}
+
+.section-subtitle {
+  font-size: $font-size-md;
+  color: $color-text-muted;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  padding: 14px 32px;
+  font-size: $font-size-base;
+  font-weight: 600;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+.btn-primary {
+  background: $gradient-accent;
+  color: $color-primary;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-glow;
+    color: $color-primary;
+  }
+}
+
+.btn-outline {
+  border: 2px solid $color-accent;
+  color: $color-accent;
+  background: transparent;
+
+  &:hover {
+    background: rgba(212, 165, 116, 0.1);
+    transform: translateY(-2px);
+    box-shadow: $shadow-glow;
+    color: $color-accent-light;
+  }
+}
+
+.btn-glass {
+  @include glass-card;
+  color: $color-text;
+  padding: 12px 28px;
+
+  &:hover {
+    background: $color-glass-hover;
+    transform: translateY(-2px);
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-primary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-tertiary;
+  border-radius: 4px;
+
+  &:hover {
+    background: $color-accent-dark;
+  }
+}
+
+// Selection
+::selection {
+  background: rgba(212, 165, 116, 0.3);
+  color: $color-text;
+}

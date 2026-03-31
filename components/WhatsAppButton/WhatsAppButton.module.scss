@@ -1,0 +1,112 @@
+@import '../../styles/variables';
+
+.whatsappContainer {
+  position: fixed;
+  bottom: $space-2xl;
+  right: $space-xl;
+  z-index: $z-whatsapp;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: $space-sm;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all $transition-spring;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  @include respond-to(mobile) {
+    bottom: $space-xl;
+    right: $space-md;
+  }
+}
+
+.whatsappBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+  transition: all $transition-base;
+  position: relative;
+  z-index: 10;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 2px solid #25D366;
+    animation: pulse-ring 2s infinite ease-in-out;
+    z-index: -1;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+  }
+}
+
+.tooltip {
+  background-color: $color-secondary;
+  color: $color-text;
+  padding: 8px 12px;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  position: absolute;
+  right: 70px;
+  bottom: 12px;
+  white-space: nowrap;
+  box-shadow: $shadow-md;
+  opacity: 0;
+  visibility: hidden;
+  transition: all $transition-base;
+  transform: translateX(10px);
+  border: 1px solid $color-glass-border;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+    border-width: 5px 0 5px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent $color-secondary;
+  }
+}
+
+.whatsappContainer:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}

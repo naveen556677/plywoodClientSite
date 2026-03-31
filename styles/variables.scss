@@ -1,0 +1,159 @@
+// ============================================
+// DESIGN TOKENS — Sri Dhanalakshmi Glass & Plywood
+// ============================================
+
+// Colors
+$color-primary: #0d0d1a;
+$color-secondary: #141428;
+$color-tertiary: #1c1c3a;
+$color-accent: #d4a574;
+$color-accent-light: #e8c89e;
+$color-accent-dark: #b8895a;
+$color-accent-glow: rgba(212, 165, 116, 0.3);
+$color-glass: rgba(255, 255, 255, 0.04);
+$color-glass-border: rgba(255, 255, 255, 0.08);
+$color-glass-hover: rgba(255, 255, 255, 0.08);
+$color-text: #f0f0f0;
+$color-text-muted: #8a8aa0;
+$color-text-dim: #5a5a70;
+$color-success: #4ecdc4;
+$color-danger: #ff6b6b;
+$color-white: #ffffff;
+$color-overlay: rgba(0, 0, 0, 0.6);
+$color-overlay-heavy: rgba(0, 0, 0, 0.8);
+
+// Gradients
+$gradient-primary: linear-gradient(135deg, $color-primary 0%, $color-secondary 50%, $color-tertiary 100%);
+$gradient-accent: linear-gradient(135deg, $color-accent 0%, $color-accent-light 100%);
+$gradient-hero: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%);
+$gradient-card: linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+
+// Typography
+$font-heading: 'Outfit', sans-serif;
+$font-body: 'Inter', sans-serif;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-md: 1.125rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-2xl: 2rem;
+$font-size-3xl: 2.5rem;
+$font-size-4xl: 3rem;
+$font-size-5xl: 3.5rem;
+$font-size-hero: 4.5rem;
+
+// Spacing
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
+$space-2xl: 3rem;
+$space-3xl: 4rem;
+$space-4xl: 6rem;
+$space-5xl: 8rem;
+
+// Border Radius
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-full: 50%;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+$shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+$shadow-glow: 0 0 20px $color-accent-glow;
+$shadow-glow-lg: 0 0 40px $color-accent-glow;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+$transition-spring: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+// Z-Indexes
+$z-base: 1;
+$z-dropdown: 100;
+$z-navbar: 1000;
+$z-modal: 2000;
+$z-whatsapp: 3000;
+
+// Breakpoints
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-wide: 1280px;
+$bp-ultrawide: 1440px;
+
+// Container
+$container-max: 1200px;
+$container-padding: $space-lg;
+
+// Mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $bp-mobile) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (max-width: $bp-tablet) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (max-width: $bp-desktop) { @content; }
+  } @else if $breakpoint == wide {
+    @media (max-width: $bp-wide) { @content; }
+  }
+}
+
+@mixin glass-card {
+  background: $gradient-card;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid $color-glass-border;
+  border-radius: $radius-lg;
+}
+
+@mixin container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+@mixin section-padding {
+  padding: $space-5xl 0;
+
+  @include respond-to(tablet) {
+    padding: $space-4xl 0;
+  }
+
+  @include respond-to(mobile) {
+    padding: $space-3xl 0;
+  }
+}
+
+@mixin accent-underline {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: $gradient-accent;
+    border-radius: 2px;
+  }
+}
+
+@mixin hover-lift {
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-lg;
+  }
+}

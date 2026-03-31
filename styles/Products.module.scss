@@ -1,0 +1,220 @@
+@import './variables';
+
+.pageHeader {
+  padding: calc($space-5xl + 40px) 0 $space-4xl;
+  background-color: $color-secondary;
+  border-bottom: 1px solid $color-glass-border;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 10% 90%, rgba(212, 165, 116, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+.headerText {
+  max-width: 800px;
+
+  h1 {
+    font-size: $font-size-hero;
+    margin-bottom: $space-md;
+
+    span {
+      background: $gradient-accent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $color-text-muted;
+  }
+
+  @include respond-to(tablet) {
+    h1 { font-size: $font-size-4xl; }
+  }
+
+  @include respond-to(mobile) {
+    h1 { font-size: $font-size-3xl; }
+    p { font-size: $font-size-base; }
+  }
+}
+
+.productsSection {
+  background-color: $color-primary;
+}
+
+.tabsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-md;
+  margin-bottom: $space-4xl;
+  justify-content: center;
+
+  @include respond-to(mobile) {
+    gap: $space-sm;
+    justify-content: flex-start;
+  }
+}
+
+.tabBtn {
+  padding: 10px 24px;
+  background-color: rgba(255,255,255,0.03);
+  border: 1px solid $color-glass-border;
+  border-radius: $radius-full;
+  color: $color-text-muted;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  transition: all $transition-base;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &:hover {
+    background-color: rgba(255,255,255,0.08);
+    color: $color-text;
+  }
+
+  &.active {
+    background: $gradient-accent;
+    color: $color-primary;
+    border-color: transparent;
+    box-shadow: $shadow-glow;
+  }
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-2xl;
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+    gap: $space-xl;
+  }
+}
+
+.productCard {
+  @include glass-card;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-xl;
+    border-color: rgba(212, 165, 116, 0.3);
+
+    .productImg {
+      transform: scale(1.08);
+    }
+
+    .productOverlay {
+      opacity: 1;
+    }
+  }
+}
+
+.imageContainer {
+  position: relative;
+  height: 240px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.productImg {
+  object-fit: cover;
+  transition: transform $transition-slow;
+}
+
+.productOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity $transition-base;
+  z-index: 2;
+}
+
+.productInfo {
+  padding: $space-lg;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    font-size: $font-size-xl;
+    margin-bottom: $space-sm;
+    color: $color-text;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+}
+
+.productCat {
+  font-size: 10px;
+  color: $color-accent;
+  font-weight: 700;
+  margin-bottom: $space-xs;
+  letter-spacing: 2px;
+}
+
+// Custom Order Section
+.customOrderSection {
+  background-color: $color-secondary;
+  padding-bottom: $space-5xl;
+}
+
+.customBox {
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(26, 26, 58, 0.5) 100%);
+  border: 1px solid rgba(212, 165, 116, 0.2);
+  border-radius: $radius-xl;
+  padding: $space-4xl;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @include respond-to(tablet) {
+    padding: $space-2xl;
+  }
+}
+
+.customContent {
+  h2 {
+    font-size: $font-size-3xl;
+    margin-bottom: $space-md;
+    color: $color-text;
+  }
+
+  p {
+    font-size: $font-size-md;
+    color: $color-text-muted;
+    margin-bottom: $space-xl;
+  }
+}
