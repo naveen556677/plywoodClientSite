@@ -35,6 +35,55 @@ export default function Home() {
     <>
       <Head>
         <title>Sri Dhanalakshmi Glass and Plywood | Home</title>
+        <meta name="description" content="Chennai's leading destination for high-quality toughened glass, custom mirrors, and premium plywood. Visit Sri Dhanalakshmi Glass and Plywood." />
+        <meta property="og:title" content="Sri Dhanalakshmi Glass and Plywood | Home" />
+        <meta property="og:description" content="Chennai's leading destination for high-quality toughened glass, custom mirrors, and premium plywood for all your architectural needs." />
+        <meta property="og:url" content="https://goo.gl/maps/b8emRwKdStyPPhC49" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HardwareStore",
+              "name": "Sri Dhanalakshmi Glass and Plywood",
+              "image": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
+              "url": "https://sridhanalakshmi-glass.in",
+              "telephone": "+919841298703",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "60, Puzhuthivakkam Main Rd, Puzhuthivakkam, Madipakkam",
+                "addressLocality": "Chennai",
+                "addressRegion": "Tamil Nadu",
+                "postalCode": "600091",
+                "addressCountry": "IN"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 12.9856149,
+                "longitude": 80.1942004
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday"
+                ],
+                "opens": "09:00",
+                "closes": "21:00"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.5",
+                "reviewCount": "11"
+              }
+            })
+          }}
+        />
       </Head>
 
       {/* Hero Section */}
@@ -73,19 +122,19 @@ export default function Home() {
       <section className={`section ${styles.aboutSection}`}>
         <div className="container">
           <div className={styles.statsGrid}>
-            <div className={`animate-in visible ${styles.statCard}`}>
+            <div className={`animate-in visible ${styles.statCard}`} style={{ transitionDelay: '0s' }}>
               <h3>{stats.years}+</h3>
               <p>Years of Excellence</p>
             </div>
-            <div className={`animate-in visible ${styles.statCard}`}>
+            <div className={`animate-in visible ${styles.statCard}`} style={{ transitionDelay: '0.1s' }}>
               <h3>{stats.customers.toLocaleString()}+</h3>
               <p>Happy Customers</p>
             </div>
-            <div className={`animate-in visible ${styles.statCard}`}>
+            <div className={`animate-in visible ${styles.statCard}`} style={{ transitionDelay: '0.2s' }}>
               <h3>{stats.products.toLocaleString()}+</h3>
               <p>Premium Products</p>
             </div>
-            <div className={`animate-in visible ${styles.statCard}`}>
+            <div className={`animate-in visible ${styles.statCard}`} style={{ transitionDelay: '0.3s' }}>
               <h3>4.5★</h3>
               <p>Google Rating</p>
             </div>
@@ -130,7 +179,7 @@ export default function Home() {
               { title: 'Premium Plywood', desc: 'Commercial and marine grade durable plywood', img: 'https://images.unsplash.com/photo-1549488344-c09ab0cd0156?auto=format&fit=crop&q=80&w=1200' },
               { title: 'Laminates & Sunmica', desc: 'Beautiful textures and finishes for furniture', img: 'https://images.unsplash.com/photo-1510114815467-15af29272332?auto=format&fit=crop&q=80&w=1200' },
             ].map((cat, i) => (
-              <div key={i} className={`animate-in visible ${styles.categoryCard}`}>
+              <div key={i} className={`animate-in visible ${styles.categoryCard}`} style={{ transitionDelay: `${i * 0.15}s` }}>
                 <Image src={cat.img} alt={cat.title} fill className={styles.catImg} />
                 <div className={styles.catOverlay}>
                   <div className={styles.catContent}>

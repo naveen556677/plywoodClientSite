@@ -46,7 +46,10 @@ export default function Services() {
   return (
     <>
       <Head>
-        <title>Services | Sri Dhanalakshmi Glass and Plywood</title>
+        <title>Our Services | Sri Dhanalakshmi Glass and Plywood</title>
+        <meta name="description" content="Professional glass cutting, beveling, toughening, and installation services in Chennai." />
+        <meta property="og:title" content="Our Services | Sri Dhanalakshmi Glass and Plywood" />
+        <meta property="og:description" content="Precision glass cutting, toughening, and installation services." />
       </Head>
 
       {/* Hero */}

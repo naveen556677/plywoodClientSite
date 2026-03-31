@@ -172,6 +172,30 @@
   text-align: center;
   background: $color-secondary;
   border-color: rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: transform $transition-spring, box-shadow $transition-spring;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.7s ease;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 15px rgba(212, 165, 116, 0.1);
+
+    &::after {
+      left: 150%;
+    }
+  }
 
   h3 {
     font-size: $font-size-4xl;

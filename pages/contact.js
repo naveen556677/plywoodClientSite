@@ -33,6 +33,9 @@ export default function Contact() {
     <>
       <Head>
         <title>Contact Us | Sri Dhanalakshmi Glass and Plywood</title>
+        <meta name="description" content="Get in touch with Sri Dhanalakshmi Glass and Plywood in Puzhuthivakkam, Chennai. Call us at 098412 98703 for queries and custom quotes." />
+        <meta property="og:title" content="Contact Sri Dhanalakshmi Glass and Plywood" />
+        <meta property="og:description" content="Visit our glass and plywood showroom in Puzhuthivakkam, Chennai." />
       </Head>
 
       <div className={styles.pageHeader}>

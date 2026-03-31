@@ -81,7 +81,10 @@ export default function Products() {
   return (
     <>
       <Head>
-        <title>Products | Sri Dhanalakshmi Glass and Plywood</title>
+        <title>Our Products | Sri Dhanalakshmi Glass and Plywood</title>
+        <meta name="description" content="Explore our wide collection of high-quality glass, mirrors, plywood, and architectural hardware. We offer custom cutting and toughened safety glass in Chennai." />
+        <meta property="og:title" content="Our Products | Sri Dhanalakshmi" />
+        <meta property="og:description" content="Explore our collection of high-quality glass, mirrors, plywood, and hardware." />
       </Head>
 
       <div className={styles.pageHeader}>

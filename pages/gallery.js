@@ -47,6 +47,9 @@ export default function Gallery() {
     <>
       <Head>
         <title>Project Gallery | Sri Dhanalakshmi Glass and Plywood</title>
+        <meta name="description" content="View our portfolio of installed frameless shower enclosures, custom vanity mirrors, glass balustrades, and commercial storefronts in Chennai." />
+        <meta property="og:title" content="Project Gallery | Sri Dhanalakshmi" />
+        <meta property="og:description" content="Portfolio of our premium glass and plywood installations." />
       </Head>
 
       <div className={styles.pageHeader}>
